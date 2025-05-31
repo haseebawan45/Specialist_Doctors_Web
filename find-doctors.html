@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Doctors - Specialist Doctors</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Specialist<span>Doctors</span></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="doctors.html">For Doctors</a></li>
+                    <li><a href="patients.html">For Patients</a></li>
+                    <li><a href="find-doctors.html" class="active">Find Doctors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Find Specialists</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Find Doctors</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <section style="background-color: var(--very-light-teal); padding: 40px 0;">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="background-color: white; padding: 30px; border-radius: 16px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);">
+                    <h2 style="text-align: center; margin-bottom: 20px;">Search For Specialists</h2>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <div class="form-group">
+                            <label for="search-query">Search by Name, Specialty or Condition</label>
+                            <div style="position: relative;">
+                                <input type="text" id="search-query" placeholder="e.g. 'Dr. Smith', 'Cardiology', 'Heart Disease'" style="padding-right: 50px;">
+                                <button id="search-btn" style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: transparent; border: none; font-size: 1.2rem; color: var(--primary-teal); cursor: pointer;">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;">
+                        <div class="form-group">
+                            <label for="specialty">Specialty</label>
+                            <select id="specialty" style="width: 100%; padding: 12px; border: 1px solid var(--divider); border-radius: 8px; font-size: 1rem; background-color: white;">
+                                <option value="">All Specialties</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="dermatology">Dermatology</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="pediatrics">Pediatrics</option>
+                                <option value="psychiatry">Psychiatry</option>
+                                <option value="gynecology">Gynecology</option>
+                                <option value="urology">Urology</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="availability">Availability</label>
+                            <select id="availability" style="width: 100%; padding: 12px; border: 1px solid var(--divider); border-radius: 8px; font-size: 1rem; background-color: white;">
+                                <option value="">Any Availability</option>
+                                <option value="today">Today</option>
+                                <option value="tomorrow">Tomorrow</option>
+                                <option value="this-week">This Week</option>
+                                <option value="next-week">Next Week</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="language">Language</label>
+                            <select id="language" style="width: 100%; padding: 12px; border: 1px solid var(--divider); border-radius: 8px; font-size: 1rem; background-color: white;">
+                                <option value="">Any Language</option>
+                                <option value="english">English</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="french">French</option>
+                                <option value="mandarin">Mandarin</option>
+                                <option value="arabic">Arabic</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" style="width: 100%; padding: 12px; border: 1px solid var(--divider); border-radius: 8px; font-size: 1rem; background-color: white;">
+                                <option value="">Any Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="non-binary">Non-binary</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-top: 25px;">
+                        <button id="clear-filters" class="btn btn-secondary" style="padding: 10px 20px;">Clear Filters</button>
+                        <button id="apply-filters" class="btn btn-primary" style="padding: 10px 20px;">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section>
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>Showing <span id="results-count">9</span> Doctors</h2>
+                <div class="form-group" style="margin: 0; width: 200px;">
+                    <select id="sort-by" style="width: 100%; padding: 10px; border: 1px solid var(--divider); border-radius: 8px; font-size: 0.9rem;">
+                        <option value="relevance">Sort by Relevance</option>
+                        <option value="rating">Sort by Rating</option>
+                        <option value="availability">Sort by Availability</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="doctors-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Doctor cards will be dynamically generated here -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button id="load-more" class="btn btn-primary">Load More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="logo">Specialist<span>Doctors</span></div>
+                    <p>Connecting patients with specialist healthcare providers through innovative technology for better health outcomes and improved access to care.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="doctors.html">For Doctors</a></li>
+                        <li><a href="patients.html">For Patients</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Healthcare Avenue, Medical District</p>
+                    <p><i class="fas fa-phone-alt"></i> +1 (800) 123-4567</p>
+                    <p style="word-wrap: break-word; overflow-wrap: break-word;"><i class="fas fa-envelope"></i> contact@specialistdoctors.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Specialist Doctors. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample doctor data
+            const doctorsData = [
+                {
+                    id: 1,
+                    name: 'Dr. Sarah Williams',
+                    specialty: 'Cardiology',
+                    image: '../assets/images/doctor-1.jpg',
+                    rating: 4.9,
+                    reviewCount: 124,
+                    languages: ['English', 'Spanish'],
+                    gender: 'female',
+                    nextAvailable: 'Today'
+                },
+                {
+                    id: 2,
+                    name: 'Dr. Michael Chen',
+                    specialty: 'Dermatology',
+                    image: '../assets/images/doctor-2.jpg',
+                    rating: 4.8,
+                    reviewCount: 98,
+                    languages: ['English', 'Mandarin'],
+                    gender: 'male',
+                    nextAvailable: 'Tomorrow'
+                },
+                {
+                    id: 3,
+                    name: 'Dr. Jessica Rodriguez',
+                    specialty: 'Neurology',
+                    image: '../assets/images/doctor-3.jpg',
+                    rating: 4.7,
+                    reviewCount: 87,
+                    languages: ['English', 'Spanish'],
+                    gender: 'female',
+                    nextAvailable: 'Today'
+                },
+                {
+                    id: 4,
+                    name: 'Dr. James Wilson',
+                    specialty: 'Orthopedics',
+                    image: '../assets/images/doctor-4.jpg',
+                    rating: 4.9,
+                    reviewCount: 156,
+                    languages: ['English'],
+                    gender: 'male',
+                    nextAvailable: 'This Week'
+                },
+                {
+                    id: 5,
+                    name: 'Dr. Emma Thompson',
+                    specialty: 'Pediatrics',
+                    image: '../assets/images/doctor-5.jpg',
+                    rating: 4.8,
+                    reviewCount: 112,
+                    languages: ['English', 'French'],
+                    gender: 'female',
+                    nextAvailable: 'Tomorrow'
+                },
+                {
+                    id: 6,
+                    name: 'Dr. Robert Lee',
+                    specialty: 'Psychiatry',
+                    image: '../assets/images/doctor-6.jpg',
+                    rating: 4.7,
+                    reviewCount: 78,
+                    languages: ['English', 'Mandarin'],
+                    gender: 'male',
+                    nextAvailable: 'Next Week'
+                },
+                {
+                    id: 7,
+                    name: 'Dr. Sophia Ahmed',
+                    specialty: 'Gynecology',
+                    image: '../assets/images/doctor-7.jpg',
+                    rating: 4.9,
+                    reviewCount: 143,
+                    languages: ['English', 'Arabic'],
+                    gender: 'female',
+                    nextAvailable: 'This Week'
+                },
+                {
+                    id: 8,
+                    name: 'Dr. David Johnson',
+                    specialty: 'Urology',
+                    image: '../assets/images/doctor-8.jpg',
+                    rating: 4.6,
+                    reviewCount: 92,
+                    languages: ['English'],
+                    gender: 'male',
+                    nextAvailable: 'Next Week'
+                },
+                {
+                    id: 9,
+                    name: 'Dr. Maria Garcia',
+                    specialty: 'Cardiology',
+                    image: '../assets/images/doctor-9.jpg',
+                    rating: 4.8,
+                    reviewCount: 105,
+                    languages: ['English', 'Spanish'],
+                    gender: 'female',
+                    nextAvailable: 'Today'
+                }
+            ];
+
+            const doctorsContainer = document.getElementById('doctorsContainer');
+            const searchBtn = document.getElementById('search-btn');
+            const applyFiltersBtn = document.getElementById('apply-filters');
+            const clearFiltersBtn = document.getElementById('clear-filters');
+            const resultsCount = document.getElementById('results-count');
+            const loadMoreBtn = document.getElementById('load-more');
+            
+            // Function to render doctor cards
+            function renderDoctors(doctors) {
+                const container = document.getElementById('doctors-container');
+                container.innerHTML = '';
+
+                if (doctors.length === 0) {
+                    container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 50px;"><h3>No doctors found matching your criteria</h3><p>Please try adjusting your filters</p></div>';
+                    return;
+                }
+
+                doctors.forEach(doctor => {
+                    const doctorCard = document.createElement('div');
+                    doctorCard.className = 'doctor-card';
+                    doctorCard.style.backgroundColor = 'white';
+                    doctorCard.style.borderRadius = '16px';
+                    doctorCard.style.overflow = 'hidden';
+                    doctorCard.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+                    doctorCard.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                    
+                    const starRating = '★'.repeat(Math.floor(doctor.rating)) + (doctor.rating % 1 >= 0.5 ? '½' : '');
+
+                    doctorCard.innerHTML = `
+                        <div style="position: relative;">
+                            <img src="${doctor.image}" alt="${doctor.name}" style="width: 100%; height: 200px; object-fit: cover;">
+                            <div style="position: absolute; top: 15px; right: 15px; background-color: ${doctor.nextAvailable === 'Today' ? 'var(--success)' : doctor.nextAvailable === 'Tomorrow' ? 'var(--warning)' : 'var(--primary-teal)'}; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 500;">
+                                ${doctor.nextAvailable}
+                            </div>
+                        </div>
+                        <div style="padding: 20px;">
+                            <h3 style="margin-bottom: 5px; color: var(--dark-text);">${doctor.name}</h3>
+                            <p style="color: var(--primary-teal); font-weight: 500; margin-bottom: 10px;">${doctor.specialty}</p>
+                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                <span style="color: var(--primary-pink); margin-right: 5px;">${starRating}</span>
+                                <span style="color: var(--primary-pink); font-weight: 500;">${doctor.rating}</span>
+                                <span style="color: var(--light-text); margin-left: 5px;">(${doctor.reviewCount} reviews)</span>
+                            </div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px;">
+                                ${doctor.languages.map(lang => `<span style="background-color: var(--light-teal); color: var(--primary-teal); padding: 3px 10px; border-radius: 20px; font-size: 0.8rem;">${lang}</span>`).join('')}
+                            </div>
+                            <a href="doctor-profile.html?id=${doctor.id}" class="btn btn-primary" style="width: 100%;">View Profile</a>
+                        </div>
+                    `;
+                    
+                    doctorCard.addEventListener('mouseover', () => {
+                        doctorCard.style.transform = 'translateY(-10px)';
+                        doctorCard.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
+                    });
+                    
+                    doctorCard.addEventListener('mouseout', () => {
+                        doctorCard.style.transform = 'translateY(0)';
+                        doctorCard.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+                    });
+                    
+                    container.appendChild(doctorCard);
+                });
+                
+                resultsCount.textContent = doctors.length;
+            }
+            
+            // Function to filter doctors based on selected criteria
+            function filterDoctors() {
+                const searchQuery = document.getElementById('search-query').value.toLowerCase();
+                const specialty = document.getElementById('specialty').value.toLowerCase();
+                const availability = document.getElementById('availability').value.toLowerCase();
+                const language = document.getElementById('language').value.toLowerCase();
+                const gender = document.getElementById('gender').value.toLowerCase();
+                
+                let filteredDoctors = doctorsData;
+                
+                if (searchQuery) {
+                    filteredDoctors = filteredDoctors.filter(doctor => 
+                        doctor.name.toLowerCase().includes(searchQuery) || 
+                        doctor.specialty.toLowerCase().includes(searchQuery)
+                    );
+                }
+                
+                if (specialty) {
+                    filteredDoctors = filteredDoctors.filter(doctor => 
+                        doctor.specialty.toLowerCase() === specialty
+                    );
+                }
+                
+                if (availability) {
+                    const availabilityMap = {
+                        'today': 'Today',
+                        'tomorrow': 'Tomorrow',
+                        'this-week': 'This Week',
+                        'next-week': 'Next Week'
+                    };
+                    filteredDoctors = filteredDoctors.filter(doctor => 
+                        doctor.nextAvailable === availabilityMap[availability]
+                    );
+                }
+                
+                if (language) {
+                    const languageMap = {
+                        'english': 'English',
+                        'spanish': 'Spanish',
+                        'french': 'French',
+                        'mandarin': 'Mandarin',
+                        'arabic': 'Arabic'
+                    };
+                    filteredDoctors = filteredDoctors.filter(doctor => 
+                        doctor.languages.includes(languageMap[language])
+                    );
+                }
+                
+                if (gender) {
+                    filteredDoctors = filteredDoctors.filter(doctor => 
+                        doctor.gender === gender
+                    );
+                }
+                
+                renderDoctors(filteredDoctors);
+            }
+            
+            // Initial render
+            renderDoctors(doctorsData);
+            
+            // Event listeners
+            searchBtn.addEventListener('click', filterDoctors);
+            document.getElementById('search-query').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    filterDoctors();
+                }
+            });
+            
+            applyFiltersBtn.addEventListener('click', filterDoctors);
+            
+            clearFiltersBtn.addEventListener('click', function() {
+                document.getElementById('search-query').value = '';
+                document.getElementById('specialty').value = '';
+                document.getElementById('availability').value = '';
+                document.getElementById('language').value = '';
+                document.getElementById('gender').value = '';
+                renderDoctors(doctorsData);
+            });
+            
+            document.getElementById('sort-by').addEventListener('change', function() {
+                const sortBy = this.value;
+                let sortedDoctors = [...doctorsData];
+                
+                switch(sortBy) {
+                    case 'rating':
+                        sortedDoctors.sort((a, b) => b.rating - a.rating);
+                        break;
+                    case 'availability':
+                        const availabilityOrder = {
+                            'Today': 0,
+                            'Tomorrow': 1,
+                            'This Week': 2,
+                            'Next Week': 3
+                        };
+                        sortedDoctors.sort((a, b) => availabilityOrder[a.nextAvailable] - availabilityOrder[b.nextAvailable]);
+                        break;
+                    default:
+                        // Default is relevance, which is the original order
+                        break;
+                }
+                
+                renderDoctors(sortedDoctors);
+            });
+            
+            loadMoreBtn.addEventListener('click', function() {
+                // In a real application, this would load more doctors from an API
+                alert('In a real application, this would load more doctors from the database.');
+            });
+        });
+    </script>
+</body>
+</html> 
