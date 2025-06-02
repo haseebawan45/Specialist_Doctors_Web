@@ -1,14 +1,49 @@
+/* Account Deletion Styles - Updated for professional look */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    /* Primary Colors - More sophisticated palette */
+    --primary-blue: #2A5DB0;
+    --primary-teal: #20A4A8;
+    
+    /* Light variants */
+    --light-blue: #EDF2FA;
+    --light-teal: #E6F7F7;
+    --very-light-blue: #F5F9FF;
+    --very-light-teal: #F0FBFB;
+    
+    /* Dark variants */
+    --dark-blue: #1E4585;
+    --dark-teal: #177F83;
+    
+    /* Neutral colors - Refined grays */
+    --dark-text: #1F2937;
+    --medium-text: #4B5563;
+    --light-text: #9CA3AF;
+    --background: #FCFCFD;
+    --divider: #E5E7EB;
+    
+    /* Status colors */
+    --success: #059669;
+    --warning: #D97706;
+    --error: #DC2626;
+    --info: #3B82F6;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
-    color: #333333;
-    line-height: 1.6;
+    background-color: var(--background);
+    color: var(--dark-text);
+    line-height: 1.7;
 }
 
 .container {
@@ -28,40 +63,53 @@ header {
 .logo {
     max-width: 150px;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 h1 {
     font-size: 1.8rem;
     font-weight: 600;
-    color: #3366CC;
+    color: var(--primary-blue);
+    letter-spacing: -0.01em;
 }
 
 .card {
     background-color: white;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    padding: 2.5rem;
     margin-bottom: 2rem;
+    border: 1px solid var(--divider);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
 .warning {
     display: flex;
     align-items: center;
-    background-color: #ffebee;
-    border: 1px solid #ffcdd2;
+    background-color: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.2);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1.5rem;
 }
 
 .warning svg {
-    color: #d32f2f;
+    color: var(--error);
     margin-right: 1rem;
     flex-shrink: 0;
 }
 
 .warning p {
-    color: #d32f2f;
+    color: var(--error);
     font-weight: 500;
 }
 
@@ -69,6 +117,8 @@ h2 {
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
+    color: var(--dark-text);
+    letter-spacing: -0.01em;
 }
 
 .delete-info {
@@ -79,27 +129,33 @@ h2 {
 .delete-info li {
     display: flex;
     margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.delete-info li:hover {
+    transform: translateX(5px);
 }
 
 .icon-wrapper {
-    background-color: #ffebee;
+    background-color: rgba(220, 38, 38, 0.1);
     border-radius: 8px;
-    padding: 0.5rem;
+    padding: 0.6rem;
     height: fit-content;
     margin-right: 1rem;
-    color: #d32f2f;
+    color: var(--error);
     flex-shrink: 0;
 }
 
 .delete-info h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 0.25rem;
+    color: var(--dark-text);
 }
 
 .delete-info p {
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 0.95rem;
+    color: var(--medium-text);
 }
 
 form {
@@ -114,21 +170,32 @@ label {
     display: block;
     font-weight: 500;
     margin-bottom: 0.5rem;
+    color: var(--dark-text);
 }
 
 input[type="tel"],
 input[type="text"] {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
+    padding: 0.9rem;
+    border: 1px solid var(--divider);
     border-radius: 8px;
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--background);
+}
+
+input[type="tel"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(42, 93, 176, 0.1);
+    transform: translateY(-2px);
 }
 
 small {
     display: block;
-    color: #666;
+    color: var(--medium-text);
     margin-top: 0.25rem;
     font-size: 0.8rem;
 }
@@ -142,13 +209,14 @@ small {
 .checkbox-group input {
     margin-right: 0.75rem;
     margin-top: 0.25rem;
+    accent-color: var(--primary-blue);
 }
 
 button {
     display: block;
     width: 100%;
     padding: 0.9rem;
-    background-color: #d32f2f;
+    background-color: var(--error);
     color: white;
     border: none;
     border-radius: 8px;
@@ -156,30 +224,63 @@ button {
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
     margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+button:hover::before {
+    left: 100%;
 }
 
 button:hover {
-    background-color: #b71c1c;
+    background-color: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 button.secondary-button {
-    background-color: #f5f5f5;
-    color: #333;
-    border: 1px solid #ddd;
+    background-color: var(--background);
+    color: var(--dark-text);
+    border: 1px solid var(--divider);
 }
 
 button.secondary-button:hover {
-    background-color: #e0e0e0;
+    background-color: var(--light-blue);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
 }
 
 .message {
     display: flex;
     align-items: flex-start;
-    padding: 1rem;
+    padding: 1.2rem;
     border-radius: 8px;
     margin-top: 1.5rem;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .message svg {
@@ -188,44 +289,65 @@ button.secondary-button:hover {
 }
 
 .success {
-    background-color: #e8f5e9;
-    border: 1px solid #c8e6c9;
+    background-color: rgba(5, 150, 105, 0.1);
+    border: 1px solid rgba(5, 150, 105, 0.2);
 }
 
 .success svg {
-    color: #2e7d32;
+    color: var(--success);
 }
 
 .success p {
-    color: #2e7d32;
+    color: var(--success);
 }
 
 .error {
-    background-color: #ffebee;
-    border: 1px solid #ffcdd2;
+    background-color: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.2);
 }
 
 .error svg {
-    color: #d32f2f;
+    color: var(--error);
 }
 
 .error p {
-    color: #d32f2f;
+    color: var(--error);
 }
 
 footer {
     text-align: center;
-    color: #666;
+    color: var(--light-text);
     font-size: 0.9rem;
+    padding: 30px 0;
+    margin-top: 50px;
+    background-color: var(--very-light-blue);
+    border-top: 1px solid var(--divider);
 }
 
 footer a {
-    color: #3366CC;
+    color: var(--primary-blue);
     text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 footer a:hover {
-    text-decoration: underline;
+    color: var(--primary-teal);
+}
+
+footer a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    background: var(--primary-teal);
+    bottom: -2px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+footer a:hover::after {
+    width: 100%;
 }
 
 @media (max-width: 600px) {
@@ -328,22 +450,29 @@ footer a:hover {
 
 /* Navigation styling */
 .nav-link {
-    margin-top: 10px;
+    margin-top: 15px;
     text-align: center;
 }
 
 .nav-link a {
-    color: #3366cc;
+    color: var(--primary-blue);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     display: inline-block;
-    padding: 5px 15px;
-    border-radius: 4px;
-    border: 1px solid #3366cc;
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--primary-blue);
+    background-color: transparent;
 }
 
 .nav-link a:hover {
-    background-color: #3366cc;
+    background-color: var(--primary-blue);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-link a::after {
+    display: none;
 } 
